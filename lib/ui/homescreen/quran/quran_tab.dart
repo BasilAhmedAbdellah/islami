@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/chapter_details/chapter_details_screen.dart';
 import 'package:islami/ui/homescreen/quran/chapter_title_widget.dart';
 
 class QuranTab extends StatelessWidget {
@@ -127,6 +126,7 @@ class QuranTab extends StatelessWidget {
         Expanded(
             flex: 1,
             child: Image.asset('assets/images/qur2an_screen_logo.png')),
+        Text('Chapter Name', style: Theme.of(context).textTheme.titleMedium),
         Expanded(
           flex: 3,
           child: ListView.separated(
@@ -135,7 +135,7 @@ class QuranTab extends StatelessWidget {
               },
               separatorBuilder: (context, index) => Container(
                     margin: EdgeInsets.symmetric(horizontal: 60),
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).dividerColor,
                     width: double.infinity,
                     height: 2,
                   ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islami/ui/MyThemeData.dart';
 import 'package:islami/ui/homescreen/hadeth/hadeth_tab.dart';
 import 'package:islami/ui/homescreen/quran/quran_tab.dart';
 import 'package:islami/ui/homescreen/radio/radio_tab.dart';
-import 'package:islami/ui/homescreen/settings/settings_tab.dart';
+import 'package:islami/ui/homescreen/settings/SettingsTab.dart';
 import 'package:islami/ui/homescreen/tasbeeh/tasbeeh_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/background_all.png'),
+                image: AssetImage(MyThemeData.isDarkEnabled
+                    ? 'assets/images/dark_bg.jpg'
+                    : 'assets/images/background_all.png'),
                 fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
