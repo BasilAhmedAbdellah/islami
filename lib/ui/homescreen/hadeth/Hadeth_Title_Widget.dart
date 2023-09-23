@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:islami/ui/HadethDetails/Hadeth_Details_Screen.dart';
-import 'package:islami/ui/chapter_details/chapter_details_screen.dart';
 import 'package:islami/ui/homescreen/hadeth/Hadeth.dart';
 
 class HadethTitleWidget extends StatelessWidget {
@@ -19,11 +18,7 @@ class HadethTitleWidget extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           hadeth.Title,
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+          style: Theme.of(context).textTheme.titleMedium),
       ),
     );
   }

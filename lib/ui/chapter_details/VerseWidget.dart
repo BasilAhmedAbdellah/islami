@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/chapter_details/chapter_details_screen.dart';
 
 class VerseWidget extends StatelessWidget {
   String Content;
@@ -16,10 +15,7 @@ class VerseWidget extends StatelessWidget {
         '$Content {${index + 1}}',
         textDirection: TextDirection.rtl,
         textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
     );
   }
