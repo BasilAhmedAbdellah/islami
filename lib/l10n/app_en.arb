@@ -6,5 +6,9 @@
   "radio": "Radio",
   "hadeth_number": "Hadeth Number",
   "chapter_name": "Chapter Name",
-  "settings": "Settings"
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark"
 }

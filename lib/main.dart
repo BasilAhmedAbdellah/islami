@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:islami/provider/SettingsProvider.dart';
 import 'package:islami/ui/HadethDetails/Hadeth_Details_Screen.dart';
 import 'package:islami/ui/MyThemeData.dart';
 import 'package:islami/ui/chapter_details/chapter_details_screen.dart';
 import 'package:islami/ui/homescreen/HomeScreen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (buildContext) => SettingsProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,11 +19,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
       title: 'islami',
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: settingsProvider.currentTheme,
       routes: {
         HomeScreen.routeName: (buildContext) => HomeScreen(),
         ChapterDetailsScreen.routeName: (buildContext) =>
@@ -34,10 +38,11 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('en'), // English
         Locale('ar'), // Spanish
       ],
+      locale: Locale(settingsProvider.currentLocale),
     );
   }
 }

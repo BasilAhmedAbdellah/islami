@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami/provider/SettingsProvider.dart';
+import 'package:provider/provider.dart';
 
 import '../../MyThemeData.dart';
 
@@ -12,14 +14,27 @@ class LanguageBottomSheet extends StatefulWidget {
 class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     return Container(
       padding: EdgeInsets.all(12),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          getSelectedItem('English'),
-          getUnselectedItem('العربيه'),
+          InkWell(
+              onTap: () {
+                provider.ChangeLocale('en');
+              },
+              child: provider.currentLocale == 'en'
+                  ? getSelectedItem('English')
+                  : getUnselectedItem('English')),
+          InkWell(
+              onTap: () {
+                provider.ChangeLocale('ar');
+              },
+              child: provider.currentLocale == 'ar'
+                  ? getSelectedItem('العربيه')
+                  : getUnselectedItem('العربيه')),
         ],
       ),
     );
@@ -43,9 +58,13 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   }
 
   Widget getUnselectedItem(String text) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.titleMedium,
+    return Row(
+      children: [
+        Text(
+          text,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ],
     );
   }
 }
